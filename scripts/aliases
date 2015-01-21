@@ -1,0 +1,27 @@
+alias ..="cd .."
+alias ...="cd ../.."
+
+alias ~='cd ~'
+alias c='clear'
+
+function server() {
+    if [[ "$1" && "$2" ]]
+    then
+        sudo dos2unix /vagrant/scripts/server.sh
+        sudo bash /vagrant/scripts/server.sh "$1" "$2"
+    else
+        echo "Error: missing required parameters."
+        echo "Usage: "
+        echo "   server domain path"
+}
+
+function db() {
+    if [[ "$1" ]]
+    then
+        sudo dos2unix /vagrant/scripts/db.sh
+        sudo bash /vagrant/scripts/db.sh
+    else
+        echo "Error: missing required parameters."
+        echo "Usage: "
+        echo "    db dbname"
+}
